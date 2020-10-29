@@ -1,6 +1,11 @@
 body {
-	background: #eeeeee;
+	background: grey;
 	font-family: tahoma, verdana, sans serif;
+}
+
+#flex{
+  display: flex;
+  justify-content: space-around;
 }
 
 canvas {
@@ -8,11 +13,14 @@ canvas {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 	box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-    background: #fafafa;
+  background: #fafafa;
 }
 
 #controls{
   margin-left: 1rem;
+  text-align: center;
+  position: relative;
+  left: -400px;
 }
 
 #volumeLabel{
@@ -23,9 +31,15 @@ section{
   margin-bottom: 1rem;
 }
 
-#playButton{
+#controls, h1, h3{
+  font-family: 'Press Start 2P', cursive;
+}
+
+#playButton, #reset{
   font-size: 1.2rem;
   width: 6rem;
+  border-radius: 8px;
+  border-style: groove;
 }
 
 button[data-playing="yes"]:after{
@@ -39,4 +53,23 @@ button[data-playing="no"]:after{
 #fsButton{
   font-size: 1.2rem;
   width: 8rem;
+  border-radius: 8px;
+  border-style: groove;
+}
+
+#gameOver{
+  color: white;
+  font-size: 3em;
+  position: absolute;
+  font-family: 'Press Start 2P', cursive;
+  left: 325px;
+  top: 165px;
+}
+
+#points{
+  position: absolute;
+  left: 5px;
+  top: 20px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: .75em;
 }

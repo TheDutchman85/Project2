@@ -1,6 +1,4 @@
-// Why are the all of these ES6 Arrow functions instead of regular JS functions?
-// No particular reason, actually, just that it's good for you to get used to this syntax
-// For Project 2 - any code added here MUST also use arrow function syntax
+//Functions that can be used across the .js files
 
 const makeColor = (red, green, blue, alpha = 1) => {
   return `rgba(${red},${green},${blue},${alpha})`;
@@ -24,7 +22,7 @@ const getLinearGradient = (ctx,startX,startY,endX,endY,colorStops) => {
   return lg;
 };
 
-function getRandomUnitVector(){
+const getRandomUnitVector = () => {
 	let x = getRandom(-1,1);
 	let y = getRandom(-1,1);
 	let length = Math.sqrt(x*x + y*y);
@@ -37,7 +35,7 @@ function getRandomUnitVector(){
 		y /= length;
 	}
 	return {x:x, y:y};
-}
+};
 
 const goFullscreen = (element) => {
 	if (element.requestFullscreen) {

@@ -2,17 +2,49 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Audio Visualizer</title>
+	<title>Audio Dodger</title>
 	<link href="styles/default-styles.css" type="text/css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="./src/loader.js" type="module"></script>
-    <script src ="src/ldvLIB.js"></script>
 </head>
 <body>
 <main>
-	<canvas width="800" height="400"></canvas>
+	<div id="flex">
+		<div id="can">
+			<canvas width="800" height="400"></canvas>
+			<h2 id="gameOver"></h2>
+		</div>
+
+		<div id="info">
+			<section>
+				<h2 id="points">Health: 5</h2>
+				<h1>Audio Dodger!</h1>
+				<h3>How To Play:</h3>
+				<p>
+					In this web audio game you will be playing as a small box trying to avoid incoming<br>
+					projectiles.  These projectiles are spawned by an unkown source in the middle of the <br>
+					map.  It seams when the audio goes higher up in hz the projectiles come out faster but<br>
+					smaller in size. Opposite to this when the audio goes below a certain hz it seams the<br>
+					projectiles come out slower and larger.  Can you survive a whole song? Play audio dodger<br>
+					to find out! 
+				</p>
+				<h3>Controls:</h3>
+				<p>
+					Use WASD to move around the map.  But be warned, once you move you can not stop. Aside from<br>
+					moving the box you have a selection of game options below the map.  The first row are: the<br>
+					play/ pause button, reset game button, enter fullscreen button, and the tracks available. <br>
+					Below this is two checkboxes to either boost the treble or the bass (warning this may increase<br>
+					volume).  And finally below that are the sliders to adjust the volume, speed of projectiles<br>
+					and the spawn rate of them.
+				</p>
+			</section>
+		</div>
+	</div>
+
 	<div id="controls">
 		<section>
 			<button id="playButton" data-playing="no"></button>
+			<button id="reset">Reset</button>
 			<button id="fsButton">Full Screen</button>
 		
 			<label>Track: 
@@ -25,12 +57,21 @@
 		</section>
 		
 		<section>
-			Volume: <input type="range" id="volumeSlider" min="0" max="2" value="1" step="0.01">
-			<span id="volumeLabel">???</span>
+			<span><label for="highshelfCB">Highshelf Filter (Treble)</label><input type="checkbox" id="highshelfCB"></span>
+			<span><label for="lowshelfCB">Lowshelf Filter (Bass)</label><input type="checkbox" id="lowshelfCB"></span>
 		</section>
 
 		<section>
-			<h2 id="points">Points: 0</h2>
+			Volume: <input type="range" id="volumeSlider" min="0" max="2" value="1" step="0.01">
+			<span id="volumeLabel">???</span>
+		</section>
+		<section>
+			Speed of Circles: <input type="range" id="speedSlider" min="1" max="5" value="2.5" step="0.5">
+			<span id="speedLabel">???</span>
+		</section>
+		<section>
+			Spawn Rate: <input type="range" id="spawnSlider" min="-10" max="10" value="0" step="1">
+			<span id="spawnLabel">???</span>
 		</section>
 	</div>
 </main>

@@ -1,5 +1,5 @@
 "use strict";
-// we've put these Sprite classes in a separate <script> tag from the rest of the code, but this code should really be in another file
+//Create a default sprite
 class Sprite{
     constructor(x=0,y=0,span=10,fwd={x:1,y:0},speed=0,color="black"){
         this.x = x;
@@ -8,11 +8,6 @@ class Sprite{
         this.fwd = fwd;
         this.speed = speed;
         this.color = color;
-        
-        // #2 - Here's a cooler idiom to accomplish the same property assignment as above, 
-        // with one line of code!
-        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
-        //Object.assign(this,{x,y,span,fwd,speed,color});
     }
 
     draw(ctx){
@@ -40,8 +35,7 @@ class Sprite{
     }
 }
 
-// #3 - Inheritance example. Note that `RingSprite` is using all the methods of Sprite 
-// except for `draw()`, which it is replacing (overriding) with its own implementation
+//create a dignut sprite based on the default
 class RingSprite extends Sprite{
     draw(ctx){
         ctx.save();
@@ -57,4 +51,19 @@ class RingSprite extends Sprite{
     
 }
 
-export {Sprite, RingSprite};
+//create a circle sprite based on the default
+class WholeRingSprite extends Sprite{
+    draw(ctx){
+        ctx.save();
+        ctx.translate(this.x,this.y);
+        ctx.beginPath();
+        ctx.arc(0,0,this.span/2,0,Math.PI * 2,false);
+        ctx.closePath();
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.restore();
+    }
+    
+}
+
+export {Sprite, RingSprite,WholeRingSprite};
